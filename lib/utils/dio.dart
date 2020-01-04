@@ -47,3 +47,10 @@ Uri getUri(String path, [Map<String, String> queryParameters]) {
       ? Uri.http(hostUrl, path, queryParameters)
       : Uri.https(hostUrl, path, queryParameters);
 }
+
+Uri getAuthUri(String path, [Map<String, String> queryParameters]) {
+  // Uri.https(authority, unencodedPath)
+  return bDebug
+      ? Uri.http("52.79.118.67:3005", path, queryParameters)
+      : Uri.https("52.79.118.67:3005", path, queryParameters);
+}

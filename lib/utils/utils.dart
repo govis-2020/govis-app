@@ -1,5 +1,6 @@
 export "package:govis/base/base_ink.dart";
 export "package:govis/base/base_button.dart";
+export 'loading_wrapper.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flushbar/flushbar.dart';
