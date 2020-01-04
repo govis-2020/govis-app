@@ -1,4 +1,5 @@
 import 'package:govis/helper.dart';
+import 'package:govis/layouts/default.dart';
 
 class KeywordPage extends StatefulWidget {
   @override
@@ -25,7 +26,10 @@ class _KeywordPageState extends State<KeywordPage> {
                 Center(
                   child: BaseButton(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => DefaultLayout()));
+                    },
                     child: Text("완료").fontSize(18),
                     // type: BaseButtonType.white,
                   ),

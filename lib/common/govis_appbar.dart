@@ -1,6 +1,10 @@
 import 'package:govis/helper.dart';
 
 class GovisAppbar extends StatelessWidget {
+  final String title;
+
+  GovisAppbar({this.title});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,6 +19,10 @@ class GovisAppbar extends StatelessWidget {
               height: 40,
             ),
           ),
+          SizedBox(width: 20),
+          title != null
+              ? Text(title).fontSize(16).textColor(Colors.black).opacity(0.7)
+              : Container(),
         ],
       ),
     );
