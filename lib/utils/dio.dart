@@ -24,11 +24,11 @@ class MyDio {
         String token = prefs.getString("access_token");
         //만일 토큰이 있으면 끼워서 보낸다.
         if (token != null) {
-          options.headers["x-access-token"] = token;
+          options.headers["authorization"] = "Bearer $token";
         }
       }, onResponse: (Response res) async {
         //만약 토큰이 갱신되면 새로 넣어준다.
-        String token = res.headers.value('access_token');
+        String token = res.headers.value('authorization');
         if (token != null) {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setString('access_token', token);
