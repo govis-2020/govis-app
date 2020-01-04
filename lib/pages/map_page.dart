@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:govis/helper.dart';
+import 'package:govis/model/campusfacility.dart';
 
 class MapPage extends StatefulWidget {
   @override
@@ -18,25 +19,36 @@ class _MapPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
-    
+
     fetchCampusFacilities();
   }
 
   fetchCampusFacilities() async {
     var res = await dio.getUri(getNodeUri("/campus"));
-    log.i(res.data);
+    var bitmapImage = await _getAssetIcon(context, "assets/images/marker.png");
+
+    setState(() {
+      res.data.forEach((c) {
+        var campus = CampusFacility.fromJson(c);
+        _markers.add(
+          Marker(
+            markerId: MarkerId(
+              LatLng(campus.latitude, campus.longitude).toString(),
+            ),
+            position: LatLng(campus.latitude, campus.longitude),
+            infoWindow: InfoWindow(
+              title: campus.name,
+            ),
+            icon: bitmapImage,
+          ),
+        );
+      });
+    });
   }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(37.5920395624461, 127.035676113136),
     zoom: 14.4746,
-  );
-
-  static final CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(37.43296265331129, -122.08832357078792),
-    tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
   );
 
   @override
