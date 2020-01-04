@@ -16,11 +16,18 @@ class _KeywordPageState extends State<KeywordPage> {
             width: double.infinity,
             height: double.infinity,
             child: Column(
-              children: <Widget>[],
+              children: <Widget>[
+                GovisAppbar(),
+                _buildContent(),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildContent() {
+    return Container();
   }
 }

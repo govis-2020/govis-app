@@ -79,7 +79,7 @@ class _AuthPageState extends State<AuthPage> {
                 height: double.infinity,
                 child: Column(
                   children: <Widget>[
-                    _buildAppbar(),
+                    GovisAppbar(),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
@@ -161,24 +161,6 @@ class _AuthPageState extends State<AuthPage> {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildAppbar() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Row(
-        children: <Widget>[
-          Hero(
-            tag: 'hero-logo',
-            child: Image.asset(
-              "assets/images/logo.png",
-              width: 40,
-              height: 40,
-            ),
-          ),
-        ],
       ),
     );
   }

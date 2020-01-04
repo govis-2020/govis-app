@@ -4,3 +4,5 @@ export "package:flutter/material.dart";
 export "package:govis/utils/dio.dart";
 export "package:govis/styles/theme.dart";
 export "package:govis/utils/utils.dart";
+
+export 'package:govis/common/govis_appbar.dart';
