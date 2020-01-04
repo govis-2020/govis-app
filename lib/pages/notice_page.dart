@@ -14,25 +14,31 @@ class _NoticePageState extends State<NoticePage> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           children: <Widget>[
-            GovisAppbar(title: "고려대학교 공지사항"),
+            GovisAppbar(title: "공지사항"),
             SizedBox(height: 20),
             SizedBox(height: 20),
             BoardListCard(
-              title: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text("최근 소식").bold().fontSize(16),
-                  Text("NEW").fontSize(8).textColor(Colors.red),
-                ],
-              ),
+              title: _buildTitleText("고려대학교 포털"),
             ),
             SizedBox(height: 30),
             BoardListCard(
-              title: Text("내 관심사 소식").bold().fontSize(16),
+              title: _buildTitleText("고려대학교 도서관"),
+            ),
+            SizedBox(height: 30),
+            BoardListCard(
+              title: _buildTitleText("고려대학교 경력개발센터"),
+            ),
+            SizedBox(height: 30),
+            BoardListCard(
+              title: _buildTitleText("고려대학교 컴퓨터학과 게시판"),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildTitleText(String text) {
+    return Text(text).bold().fontSize(16);
   }
 }
