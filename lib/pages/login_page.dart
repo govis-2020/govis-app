@@ -1,8 +1,12 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
+import 'package:govis/bloc/bloc.dart';
 import 'package:govis/helper.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:govis/model/user.dart';
 import 'package:govis/pages/auth_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:govis/App.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -38,9 +42,10 @@ class _LoginPageState extends State<LoginPage> {
         await prefs.setString(
             'access_token', res.data["loginInfo"]["accessToken"]);
 
-        // res.data["loginInfo"]["userInfo"]["userName"]
-        // res.data["loginInfo"]["userInfo"]["email"]
-        // res.data["loginInfo"]["userInfo"]["valid"]
+        var user = User.fromJson(res.data["loginInfo"]["userInfo"]);
+
+        final userBloc = BlocProvider.of<UserBloc>(context);
+        userBloc.add(UserLogin(user: user));
 
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(

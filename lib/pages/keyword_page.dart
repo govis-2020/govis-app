@@ -9,39 +9,52 @@ class KeywordPage extends StatefulWidget {
 class _KeywordPageState extends State<KeywordPage> {
   List<String> keywords = [];
 
+  LoadingWrapperController loadingController = LoadingWrapperController();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Container(
-        color: ThemeColor.primary,
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Column(
-              children: <Widget>[
-                GovisAppbar(),
-                SizedBox(height: 30),
-                Expanded(child: _buildContent()),
-                Center(
-                  child: BaseButton(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => DefaultLayout()));
-                    },
-                    child: Text("완료").fontSize(18),
-                    // type: BaseButtonType.white,
-                  ),
+    return LoadingWrapper(
+      controller: loadingController,
+      builder: (context, loading) {
+        return Scaffold(
+          resizeToAvoidBottomInset: true,
+          body: Container(
+            color: ThemeColor.primary,
+            child: SafeArea(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Column(
+                  children: <Widget>[
+                    GovisAppbar(),
+                    SizedBox(height: 30),
+                    Expanded(child: _buildContent()),
+                    Center(
+                      child: BaseButton(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        onPressed: _onSubmit,
+                        child: Text("완료").fontSize(18),
+                        // type: BaseButtonType.white,
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                  ],
                 ),
-                SizedBox(height: 30),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
+  }
+
+  void _onSubmit() {
+    loadingController.loadFuture(() async {
+      
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => DefaultLayout()));
+    });
   }
 
   void _onTapKeywordButton(String text) {

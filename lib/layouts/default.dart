@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:govis/layouts/tab_button.dart';
+import 'package:govis/pages/map_page.dart';
+import 'package:govis/pages/my_page.dart';
 import 'package:govis/pages/notice_page.dart';
 import 'package:govis/pages/home_page.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +17,8 @@ class _DefaultLayoutState extends State<DefaultLayout> {
   final List<Widget> _children = [
     HomePage(),
     NoticePage(),
-    Container(),
-    Container(),
+    MapPage(),
+    MyPage(),
   ];
 
   LoadingWrapperController loadingController = LoadingWrapperController();

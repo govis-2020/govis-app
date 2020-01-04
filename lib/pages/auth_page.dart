@@ -1,6 +1,8 @@
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
+import 'package:govis/model/user.dart';
 import 'package:govis/pages/keyword_page.dart';
+import 'package:govis/App.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -50,10 +52,11 @@ class _AuthPageState extends State<AuthPage> {
 
   validHakbun() {
     loadingController.loadFuture(() async {
+      User user = dependencies.userRepository.getUser();
       var res = await dio.postUri(getAuthUri('/'), data: {
         "id": idController.text,
         "password": passwordController.text,
-        "userId": 6,
+        "userId": user.userId,
       });
 
       if (res.data) {
