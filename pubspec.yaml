@@ -33,6 +33,7 @@ dependencies:
   styled_widget: ^0.0.6
   time: ^1.2.0
   flutter_fadein: ^1.1.1
+  google_sign_in: ^4.1.1
 
 dev_dependencies:
   flutter_test:

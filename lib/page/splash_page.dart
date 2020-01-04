@@ -1,5 +1,6 @@
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -7,6 +8,13 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+
   bool isShow = false;
 
   @override
@@ -21,6 +29,16 @@ class _SplashPageState extends State<SplashPage> {
     setState(() {
       isShow = true;
     });
+  }
+
+  Future<void> _handleSignIn() async {
+    try {
+      var account = await _googleSignIn.signIn();
+      var auth = await account.authentication;
+      print(auth.accessToken);
+    } catch (error) {
+      print(error);
+    }
   }
 
   @override
@@ -45,6 +63,13 @@ class _SplashPageState extends State<SplashPage> {
               ),
               SizedBox(height: 30),
               Text("GOVIS").textColor(Colors.white).bold().fontSize(36),
+              SizedBox(height: 100),
+              RaisedButton(
+                onPressed: () async {
+                  await _handleSignIn();
+                },
+                child: Text("로그인"),
+              )
             ],
           ),
         ),
