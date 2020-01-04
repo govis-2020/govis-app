@@ -20,7 +20,15 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var account = await _googleSignIn.signIn();
       var auth = await account.authentication;
-      print(account);
+
+      var res = await dio.postUri(
+        getUri('/user/login'),
+        data: {
+          "googleIdToken": auth.accessToken,
+        },
+      );
+
+      log.i(res.data);
 
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(

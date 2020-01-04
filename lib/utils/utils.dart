@@ -2,6 +2,7 @@ export "package:govis/base/base_ink.dart";
 export "package:govis/base/base_button.dart";
 export "package:govis/base/base_divider.dart";
 export "package:govis/base/base_card.dart";
+export "package:govis/base/base_none_glow_scroll_wrapper.dart";
 
 export 'loading_wrapper.dart';
 

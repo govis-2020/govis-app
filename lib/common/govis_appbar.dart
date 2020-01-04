@@ -29,7 +29,7 @@ class GovisAppbar extends StatelessWidget {
                       speed: Duration(milliseconds: 150),
                       text: [title],
                       textStyle:
-                          TextStyle(fontSize: 16.0, color: Colors.black54),
+                          TextStyle(fontSize: 16.0, color: Colors.black87),
                       textAlign: TextAlign.start,
                       alignment:
                           AlignmentDirectional.topStart // or Alignment.topLeft

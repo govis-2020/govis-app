@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 //개발 모드에 따른 hostUrl
 const bool bDebug = true;
-const String hostUrl = bDebug ? "52.79.118.67:8080" : "www.yonple.com:4000";
+const String hostUrl = bDebug ? "52.79.118.67:8080" : "52.79.118.67:8080";
 
 //Dio Singleton
 class MyDio {
