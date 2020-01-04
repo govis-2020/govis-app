@@ -102,6 +102,8 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   Widget _buildContent() {
+    final Color whiteColor = Colors.white54;
+    final Color focusColor = ThemeColor.primaryDark;
     return FadeIn(
       duration: Duration(seconds: 1),
       child: Container(
@@ -122,11 +124,14 @@ class _AuthPageState extends State<AuthPage> {
                 hintText: "학번",
                 hoverColor: Colors.white,
                 border: OutlineInputBorder(),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white, width: 1),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: whiteColor, width: 1),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: focusColor, width: 1),
                 ),
                 labelStyle: TextStyle(color: Colors.white),
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white38),
               ),
               style: TextStyle(color: Colors.white),
             ),
@@ -136,15 +141,21 @@ class _AuthPageState extends State<AuthPage> {
               focusNode: passwordFocusNode,
               obscureText: true,
               keyboardType: TextInputType.visiblePassword,
+              onSubmitted: (text) {
+                validHakbun();
+              },
               decoration: InputDecoration(
                 hintText: "비밀번호",
                 hoverColor: Colors.white,
                 border: OutlineInputBorder(),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white, width: 1),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: whiteColor, width: 1),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: focusColor, width: 1),
                 ),
                 labelStyle: TextStyle(color: Colors.white),
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white38),
               ),
               style: TextStyle(color: Colors.white),
             ),
