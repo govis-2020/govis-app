@@ -50,8 +50,11 @@ class _AuthPageState extends State<AuthPage> {
 
   validHakbun() {
     loadingController.loadFuture(() async {
-      var res = await dio.postUri(getAuthUri('/'),
-          data: {"id": idController.text, "password": passwordController.text});
+      var res = await dio.postUri(getAuthUri('/'), data: {
+        "id": idController.text,
+        "password": passwordController.text,
+        "userId": 6,
+      });
 
       if (res.data) {
         Navigator.of(context).pushReplacement(

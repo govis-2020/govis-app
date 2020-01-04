@@ -2,6 +2,7 @@ import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:govis/pages/auth_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -31,14 +32,25 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
 
-      log.i(res.data);
+      if (res.data["code"] == 200) {
+        //액세스 토큰 입력
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString(
+            'access_token', res.data["loginInfo"]["accessToken"]);
 
-      Navigator.of(context).pushReplacement(
-        PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 1500),
-          pageBuilder: (_, __, ___) => AuthPage(),
-        ),
-      );
+        // res.data["loginInfo"]["userInfo"]["userName"]
+        // res.data["loginInfo"]["userInfo"]["email"]
+        // res.data["loginInfo"]["userInfo"]["valid"]
+
+        Navigator.of(context).pushReplacement(
+          PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 1500),
+            pageBuilder: (_, __, ___) => AuthPage(),
+          ),
+        );
+      } else {
+        throw new ErrorSummary("Login Failed");
+      }
     } catch (error) {
       print(error);
     }
