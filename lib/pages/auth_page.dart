@@ -1,6 +1,6 @@
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
-import 'package:govis/page/keyword_page.dart';
+import 'package:govis/pages/keyword_page.dart';
 
 class AuthPage extends StatefulWidget {
   @override

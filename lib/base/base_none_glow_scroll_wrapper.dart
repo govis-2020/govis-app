@@ -9,7 +9,7 @@ class BaseNoneGlowScrollWrapper extends StatelessWidget {
       onNotification: (listener) {
         listener.disallowGlow();
       },
-      child: child,
+      child: SingleChildScrollView(child: child),
     );
   }
 }

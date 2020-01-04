@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:govis/layouts/tab_button.dart';
-import 'package:govis/page/notice_page.dart';
+import 'package:govis/pages/notice_page.dart';
 import 'package:govis/pages/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:govis/helper.dart';
