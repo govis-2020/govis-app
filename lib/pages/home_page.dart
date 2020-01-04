@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:govis/common/base_list_item.dart';
+import 'package:govis/base/base_list_item.dart';
 import 'package:govis/helper.dart';
 import 'package:govis/home/home_news_card.dart';
 
