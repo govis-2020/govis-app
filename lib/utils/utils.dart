@@ -1,0 +1,1 @@
+export "package:govis/base/base_ink.dart";
