@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
           primaryColorLight: ThemeColor.primaryLight,
           secondaryHeaderColor: ThemeColor.secondary,
         ),
-        home: LoginPage(),
-        // home: DefaultLayout(),
+        // home: LoginPage(),
+        home: DefaultLayout(),
       ),
     );
   }

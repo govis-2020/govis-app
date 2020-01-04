@@ -17,7 +17,7 @@ class _KeywordPageState extends State<KeywordPage> {
       controller: loadingController,
       builder: (context, loading) {
         return Scaffold(
-          resizeToAvoidBottomInset: true,
+          resizeToAvoidBottomInset: false,
           body: Container(
             color: ThemeColor.primary,
             child: SafeArea(
@@ -51,7 +51,11 @@ class _KeywordPageState extends State<KeywordPage> {
 
   void _onSubmit() {
     loadingController.loadFuture(() async {
-      
+      // dio.postUri(
+      //   getUri('/user/keywords'),
+      //   data: {"userKeywords": []},
+      // );
+
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => DefaultLayout()));
     });

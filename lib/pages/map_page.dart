@@ -15,6 +15,18 @@ class _MapPageState extends State<MapPage> {
 
   final Set<Marker> _markers = {};
 
+  @override
+  void initState() {
+    super.initState();
+    
+    fetchCampusFacilities();
+  }
+
+  fetchCampusFacilities() async {
+    var res = await dio.getUri(getNodeUri("/campus"));
+    log.i(res.data);
+  }
+
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
@@ -43,15 +55,15 @@ class _MapPageState extends State<MapPage> {
   }
 
   void onTap(LatLng latlng) async {
-    var bitmapImage = await _getAssetIcon(context, "assets/images/logo.png");
+    var bitmapImage = await _getAssetIcon(context, "assets/images/marker.png");
 
     setState(() {
       _markers.add(
         Marker(
           markerId: MarkerId(
-            LatLng(37.42796133580664, -122.085749655962).toString(),
+            latlng.toString(),
           ),
-          position: LatLng(37.42796133580664, -122.085749655962),
+          position: latlng,
           infoWindow: InfoWindow(
             title: '선호지역',
           ),
