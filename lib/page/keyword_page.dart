@@ -12,6 +12,7 @@ class _KeywordPageState extends State<KeywordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         color: ThemeColor.primary,
         child: SafeArea(
