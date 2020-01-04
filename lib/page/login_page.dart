@@ -16,22 +16,6 @@ class _LoginPageState extends State<LoginPage> {
     ],
   );
 
-  bool isShow = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    showImage();
-  }
-
-  showImage() async {
-    await Future.delayed(1.seconds);
-    setState(() {
-      isShow = true;
-    });
-  }
-
   Future<void> _handleSignIn() async {
     try {
       var account = await _googleSignIn.signIn();
@@ -40,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          transitionDuration: Duration(seconds: 2),
+          transitionDuration: Duration(milliseconds: 1500),
           pageBuilder: (_, __, ___) => AuthPage(),
         ),
       );

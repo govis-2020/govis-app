@@ -3,7 +3,7 @@ import 'package:govis/helper.dart';
 
 enum BaseButtonType {
   primary,
-  danger,
+  white,
 }
 
 class BaseButton extends StatelessWidget {
@@ -24,7 +24,7 @@ class BaseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color =
-        type == BaseButtonType.primary ? ThemeColor.primary : ThemeColor.danger;
+        type == BaseButtonType.primary ? ThemeColor.primary : Colors.white;
     return RaisedButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
@@ -32,7 +32,9 @@ class BaseButton extends StatelessWidget {
       ),
       elevation: 0.0,
       color: plain ? Colors.white : color,
-      textColor: plain ? color : Colors.white,
+      textColor: plain
+          ? color
+          : type == BaseButtonType.primary ? Colors.white : ThemeColor.primary,
       splashColor: plain ? color.withOpacity(0.2) : Colors.white12,
       highlightColor: color.withOpacity(0.1),
       onPressed: onPressed,
