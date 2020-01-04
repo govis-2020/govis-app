@@ -158,7 +158,7 @@ class _AuthPageState extends State<AuthPage> {
                 child: Text("인증하기"),
                 type: BaseButtonType.white,
               ),
-            )
+            ),
           ],
         ),
       ),
