@@ -3,8 +3,9 @@ import 'package:govis/helper.dart';
 
 class GovisAppbar extends StatelessWidget {
   final String title;
+  final bool isAnimated;
 
-  GovisAppbar({this.title});
+  GovisAppbar({this.title, this.isAnimated = false});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,21 @@ class GovisAppbar extends StatelessWidget {
           ),
           SizedBox(width: 20),
           title != null
-              ? SizedBox(
-                  width: 200.0,
-                  child: TypewriterAnimatedTextKit(
-                      totalRepeatCount: 1,
-                      speed: Duration(milliseconds: 150),
-                      text: [title],
-                      textStyle:
-                          TextStyle(fontSize: 16.0, color: Colors.black87),
-                      textAlign: TextAlign.start,
-                      alignment:
-                          AlignmentDirectional.topStart // or Alignment.topLeft
-                      ),
-                )
+              ? isAnimated
+                  ? SizedBox(
+                      width: 200.0,
+                      child: TypewriterAnimatedTextKit(
+                          totalRepeatCount: 1,
+                          speed: Duration(milliseconds: 150),
+                          text: [title],
+                          textStyle:
+                              TextStyle(fontSize: 16.0, color: Colors.black87),
+                          textAlign: TextAlign.start,
+                          alignment: AlignmentDirectional
+                              .topStart // or Alignment.topLeft
+                          ),
+                    )
+                  : Text(title).fontSize(16).textColor(Colors.black87)
               : Container(),
         ],
       ),

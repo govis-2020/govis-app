@@ -16,7 +16,10 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           children: <Widget>[
-            GovisAppbar(title: "홍길동님, 좋은 아침이에요!"),
+            GovisAppbar(
+              title: "홍길동님, 좋은 아침이에요!",
+              isAnimated: true,
+            ),
             SizedBox(height: 20),
             HomeNewsCard(),
             SizedBox(height: 20),
