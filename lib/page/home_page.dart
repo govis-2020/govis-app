@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 10),
           BaseCard(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,10 +26,8 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text("최근 소식").bold(),
+                        Text("최근 소식").bold().fontSize(16),
                         Text("NEW").fontSize(8).textColor(Colors.red),
-                        SizedBox(height: 20),
-                        BaseListItem(),
                       ],
                     ),
                     BaseInk(
@@ -38,6 +37,12 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
+                SizedBox(height: 20),
+                BaseListItem(),
+                BaseListItem(),
+                BaseListItem(),
+                BaseListItem(),
+                BaseListItem(),
               ],
             ),
           ),

@@ -5,13 +5,13 @@ part 'board.g.dart';
 
 @JsonSerializable()
 class Board extends Equatable {
-  int id;
-  int boardId;
-  String title;
-  String content;
-  List<Map<String, String>> attachment;
-  DateTime crawlCreatedAt;
-  DateTime createdAt;
+  final int id;
+  final int boardId;
+  final String title;
+  final String content;
+  final List<Map<String, String>> attachment;
+  final DateTime crawlCreatedAt;
+  final DateTime createdAt;
 
   Board({
     this.id,
