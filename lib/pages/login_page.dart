@@ -1,7 +1,7 @@
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:govis/page/auth_page.dart';
+import 'package:govis/pages/auth_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
         getUri('/user/login'),
         data: {
           "googleIdToken": auth.accessToken,
-          "name": account.displayName,
+          "userName": account.displayName,
           "email": account.email,
         },
       );

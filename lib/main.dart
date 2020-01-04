@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:govis/layouts/default.dart';
-import 'package:govis/page/login_page.dart';
+import 'package:govis/pages/login_page.dart';
 import 'package:govis/styles/theme.dart';
 
 void main() => runApp(MyApp());
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         primaryColorLight: ThemeColor.primaryLight,
         secondaryHeaderColor: ThemeColor.secondary,
       ),
-      home: LoginPage(),
-      // home: DefaultLayout(),
+      // home: LoginPage(),
+      home: DefaultLayout(),
     );
   }
 }
