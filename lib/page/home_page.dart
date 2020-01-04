@@ -11,11 +11,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: <Widget>[
           GovisAppbar(title: "홍길동님, 좋은 아침이에요!"),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           BaseCard(
             child: Column(
               mainAxisSize: MainAxisSize.min,

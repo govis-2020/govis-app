@@ -20,9 +20,9 @@ class BaseListItem extends StatelessWidget {
                   child: Text(
                     "경력개발센터 공지사항 근로장학생 모집중입니다.",
                     overflow: TextOverflow.ellipsis,
-                  ).textColor(Colors.black87),
+                  ).textColor(Colors.black87).fontSize(10),
                 ),
-                Text("2019.12.31").fontSize(10).textColor(Colors.black38),
+                Text("2019.12.31").fontSize(9).textColor(Colors.black38),
               ],
             ),
             SizedBox(height: 10),

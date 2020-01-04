@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:govis/helper.dart';
 
 class GovisAppbar extends StatelessWidget {
@@ -21,7 +22,19 @@ class GovisAppbar extends StatelessWidget {
           ),
           SizedBox(width: 20),
           title != null
-              ? Text(title).fontSize(16).textColor(Colors.black).opacity(0.7)
+              ? SizedBox(
+                  width: 200.0,
+                  child: TypewriterAnimatedTextKit(
+                      totalRepeatCount: 1,
+                      speed: Duration(milliseconds: 150),
+                      text: [title],
+                      textStyle:
+                          TextStyle(fontSize: 16.0, color: Colors.black54),
+                      textAlign: TextAlign.start,
+                      alignment:
+                          AlignmentDirectional.topStart // or Alignment.topLeft
+                      ),
+                )
               : Container(),
         ],
       ),
