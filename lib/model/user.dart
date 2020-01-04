@@ -28,4 +28,13 @@ class User extends Equatable {
   factory User.fromJson(Map<String, dynamic> json) {
     return _$UserFromJson(json);
   }
+
+  User copyWith({int userId, String userName, String email, bool isValid}) {
+    return User(
+      userId: userId ?? this.userId,
+      userName: userName ?? this.userName,
+      email: email ?? this.email,
+      isValid: isValid ?? this.isValid,
+    );
+  }
 }
