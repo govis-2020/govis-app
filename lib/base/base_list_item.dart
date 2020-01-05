@@ -1,8 +1,10 @@
 import 'package:govis/helper.dart';
+import 'package:govis/model/board.dart';
 
 class BaseListItem extends StatelessWidget {
-  // final String title;
-  // final String createdAt;
+  final Board board;
+
+  BaseListItem({@required this.board});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,9 @@ class BaseListItem extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    "경력개발센터 공지사항 근로장학생 모집중입니다.",
+                    board.title,
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ).textColor(Colors.black87).fontSize(10),
                 ),
                 Text("2019.12.31").fontSize(9).textColor(Colors.black38),

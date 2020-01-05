@@ -31,7 +31,10 @@ class BoardListCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          for (int i = 0; i < boards.length; i++) BaseListItem()
+          for (int i = 0; i < boards.length; i++)
+            BaseListItem(
+              board: boards[i],
+            )
         ],
       ),
     );
