@@ -1,3 +1,4 @@
+import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:govis/helper.dart';
 import 'package:govis/layouts/default.dart';
 
@@ -7,9 +8,27 @@ class KeywordPage extends StatefulWidget {
 }
 
 class _KeywordPageState extends State<KeywordPage> {
-  List<String> keywords = [];
+  List<String> selectedKeywords = [];
+  List<Map<String, dynamic>> keywords = [];
 
   LoadingWrapperController loadingController = LoadingWrapperController();
+  @override
+  void initState() {
+    super.initState();
+
+    fetchKeywords();
+  }
+
+  fetchKeywords() async {
+    try {
+      var res = await dio.getUri(getUri("/keywords"));
+      setState(() {
+        keywords = res.data["keywordEntities"].cast<Map<String, dynamic>>();
+      });
+    } catch (e) {
+      log.e(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +83,17 @@ class _KeywordPageState extends State<KeywordPage> {
   void _onTapKeywordButton(String text) {
     if (_isIncludeKeyword(text)) {
       setState(() {
-        keywords.remove(text);
+        selectedKeywords.remove(text);
       });
     } else {
       setState(() {
-        keywords.add(text);
+        selectedKeywords.add(text);
       });
     }
   }
 
   bool _isIncludeKeyword(String text) {
-    return keywords.contains(text);
+    return selectedKeywords.contains(text);
   }
 
   Widget _buildContent() {
@@ -84,31 +103,26 @@ class _KeywordPageState extends State<KeywordPage> {
         children: <Widget>[
           Text("관심있는 키워드를 선택하세요").bold().textColor(Colors.white).fontSize(24),
           SizedBox(height: 150),
-          _KeywordButton(
-            text: "장학금",
-            active: _isIncludeKeyword("장학금"),
-            onTap: _onTapKeywordButton,
-          ),
-          SizedBox(height: 20),
-          _KeywordButton(
-            text: "이중/복수전공",
-            active: _isIncludeKeyword("이중/복수전공"),
-            onTap: _onTapKeywordButton,
-          ),
-          SizedBox(height: 20),
-          _KeywordButton(
-            text: "교환학생",
-            active: _isIncludeKeyword("교환학생"),
-            onTap: _onTapKeywordButton,
-          ),
-          SizedBox(height: 20),
-          _KeywordButton(
-            text: "취업",
-            active: _isIncludeKeyword("취업"),
-            onTap: _onTapKeywordButton,
-          ),
-          SizedBox(height: 30),
-          Text("${keywords.length}개 선택").textColor(Colors.white70).fontSize(12),
+          keywords.length > 0
+              ? FadeIn(
+                  duration: Duration(milliseconds: 1500),
+                  child: Column(
+                    children: <Widget>[
+                      for (int i = 0; i < keywords.length; i++) ...[
+                        _KeywordButton(
+                          text: keywords[i]["name"],
+                          active: _isIncludeKeyword(keywords[i]["name"]),
+                          onTap: _onTapKeywordButton,
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                      Text("${selectedKeywords.length}개 선택")
+                          .textColor(Colors.white70)
+                          .fontSize(12),
+                    ],
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

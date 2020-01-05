@@ -24,7 +24,7 @@ class MyDio {
         String token = prefs.getString("access_token");
         //만일 토큰이 있으면 끼워서 보낸다.
         if (token != null) {
-          options.headers["authorization"] = "Bearer $token";
+          options.headers["Authorization"] = "$token";
         }
       }, onResponse: (Response res) async {
         //만약 토큰이 갱신되면 새로 넣어준다.

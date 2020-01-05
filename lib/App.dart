@@ -3,6 +3,7 @@ import 'package:govis/Dependencies.dart';
 import 'package:govis/bloc/bloc.dart';
 import 'package:govis/helper.dart';
 import 'package:govis/layouts/default.dart';
+import 'package:govis/pages/keyword_page.dart';
 import 'package:govis/pages/login_page.dart';
 
 Dependencies _sharedDependencies;
@@ -38,8 +39,8 @@ class MyApp extends StatelessWidget {
           primaryColorLight: ThemeColor.primaryLight,
           secondaryHeaderColor: ThemeColor.secondary,
         ),
-        // home: LoginPage(),
-        home: DefaultLayout(),
+        home: LoginPage(),
+        // home: DefaultLayout(),
       ),
     );
   }
