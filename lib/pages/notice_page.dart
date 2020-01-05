@@ -18,10 +18,6 @@ class _NoticePageState extends State<NoticePage> {
             SizedBox(height: 20),
             SizedBox(height: 20),
             BoardListCard(
-              title: _buildTitleText("고려대학교 포털"),
-            ),
-            SizedBox(height: 30),
-            BoardListCard(
               title: _buildTitleText("고려대학교 도서관"),
             ),
             SizedBox(height: 30),

@@ -1,5 +1,6 @@
 import 'package:govis/helper.dart';
 import 'package:govis/model/board.dart';
+import 'package:govis/pages/board_view_page.dart';
 
 class BaseListItem extends StatelessWidget {
   final Board board;
@@ -10,7 +11,14 @@ class BaseListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: BaseInk(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              transitionDuration: Duration(milliseconds: 500),
+              pageBuilder: (_, __, ___) => BoardViewPage(id: board.id),
+            ),
+          );
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[

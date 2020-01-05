@@ -35,6 +35,11 @@ class _MyPageState extends State<MyPage> {
             ],
           ),
           ListTile(
+            onTap: () async {},
+            title: Text("내 관심사 키워드"),
+          ),
+          BaseDivider(),
+          ListTile(
             onTap: () async {
               await _googleSignIn.disconnect();
               Navigator.of(context).pushReplacement(
@@ -45,7 +50,8 @@ class _MyPageState extends State<MyPage> {
               );
             },
             title: Text("로그아웃"),
-          )
+          ),
+          BaseDivider(),
         ],
       ),
     );

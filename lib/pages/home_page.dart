@@ -31,8 +31,6 @@ class _HomePageState extends State<HomePage> {
     var res =
         await dio.getUri(getUri("/boards", {"limit": "5", "interest": "Y"}));
 
-    log.i(res.data);
-
     if (res.data["code"] == 200) {
       var boards = res.data["infos"]
           .map((b) {
