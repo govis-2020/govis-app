@@ -1,5 +1,6 @@
 import 'package:govis/board/board_list_card.dart';
 import 'package:govis/helper.dart';
+import 'package:govis/model/board.dart';
 
 class NoticePage extends StatefulWidget {
   @override
@@ -7,6 +8,23 @@ class NoticePage extends StatefulWidget {
 }
 
 class _NoticePageState extends State<NoticePage> {
+  fetchBoards(String type) async {
+    var res = await dio.getUri(getUri("/boards", {"limit": "5", "type": type}));
+
+    if (res.data["code"] == 200) {
+      var boards = res.data["infos"]
+          .map((b) {
+            return Board.fromJson(b);
+          })
+          .toList()
+          .cast<Board>();
+
+      return boards;
+    }
+
+    return [];
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseNoneGlowScrollWrapper(
@@ -16,18 +34,30 @@ class _NoticePageState extends State<NoticePage> {
           children: <Widget>[
             GovisAppbar(title: "공지사항"),
             SizedBox(height: 20),
-            SizedBox(height: 20),
-            BoardListCard(
-              title: _buildTitleText("고려대학교 도서관"),
+            FutureBuilder(
+              future: fetchBoards("cs"),
+              builder: (BuildContext context, snapshot) {
+                bool hasData = snapshot.hasData && snapshot.data.length > 0;
+
+                return BoardListCard(
+                  title: Text("고려대학교 컴퓨터학과 게시판").bold().fontSize(16),
+                  boards: hasData ? snapshot.data : [],
+                );
+              },
             ),
             SizedBox(height: 30),
-            BoardListCard(
-              title: _buildTitleText("고려대학교 경력개발센터"),
+            FutureBuilder(
+              future: fetchBoards("job"),
+              builder: (BuildContext context, snapshot) {
+                bool hasData = snapshot.hasData && snapshot.data.length > 0;
+
+                return BoardListCard(
+                  title: Text("고려대학교 경력개발센터").bold().fontSize(16),
+                  boards: hasData ? snapshot.data : [],
+                );
+              },
             ),
             SizedBox(height: 30),
-            BoardListCard(
-              title: _buildTitleText("고려대학교 컴퓨터학과 게시판"),
-            ),
           ],
         ),
       ),
