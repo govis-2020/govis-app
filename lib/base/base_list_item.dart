@@ -13,10 +13,8 @@ class BaseListItem extends StatelessWidget {
       child: BaseInk(
         onTap: () {
           Navigator.of(context).push(
-            PageRouteBuilder(
-              transitionDuration: Duration(milliseconds: 500),
-              pageBuilder: (_, __, ___) => BoardViewPage(id: board.id),
-            ),
+            MaterialPageRoute(
+                builder: (context) => BoardViewPage(id: board.id)),
           );
         },
         child: Column(
@@ -26,6 +24,14 @@ class BaseListItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                board.keyword != null
+                    ? Padding(
+                        padding: EdgeInsets.only(right: 5),
+                        child: Text(board.keyword)
+                            .fontSize(8)
+                            .textColor(Colors.black54),
+                      )
+                    : Container(),
                 Expanded(
                   child: Text(
                     board.title,
@@ -33,7 +39,9 @@ class BaseListItem extends StatelessWidget {
                     maxLines: 1,
                   ).textColor(Colors.black87).fontSize(10),
                 ),
-                Text("2019.12.31").fontSize(9).textColor(Colors.black38),
+                Text(board.createdAt.toString().substring(0, 10))
+                    .fontSize(9)
+                    .textColor(Colors.black38),
               ],
             ),
             SizedBox(height: 10),

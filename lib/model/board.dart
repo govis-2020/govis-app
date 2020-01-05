@@ -12,6 +12,8 @@ class Board extends Equatable {
   final List<Map<String, String>> attachment;
   final DateTime crawlCreatedAt;
   final DateTime createdAt;
+  final String keyword;
+
 
   Board({
     this.id,
@@ -21,6 +23,7 @@ class Board extends Equatable {
     this.attachment,
     this.crawlCreatedAt,
     this.createdAt,
+    this.keyword,
   });
 
   @override
@@ -32,6 +35,7 @@ class Board extends Equatable {
         attachment,
         crawlCreatedAt,
         createdAt,
+        keyword,
       ];
 
   factory Board.fromJson(Map<String, dynamic> json) {

@@ -23,6 +23,7 @@ Board _$BoardFromJson(Map<String, dynamic> json) {
     createdAt: json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String),
+    keyword: json['keyword'] as String,
   );
 }
 
@@ -34,4 +35,5 @@ Map<String, dynamic> _$BoardToJson(Board instance) => <String, dynamic>{
       'attachment': instance.attachment,
       'crawlCreatedAt': instance.crawlCreatedAt?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
+      'keyword': instance.keyword,
     };

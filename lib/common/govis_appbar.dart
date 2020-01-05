@@ -37,7 +37,13 @@ class GovisAppbar extends StatelessWidget {
                               .topStart // or Alignment.topLeft
                           ),
                     )
-                  : Text(title).fontSize(16).textColor(Colors.black87)
+                  : Expanded(
+                      child: Text(
+                        title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ).fontSize(16).textColor(Colors.black87),
+                    )
               : Container(),
         ],
       ),
